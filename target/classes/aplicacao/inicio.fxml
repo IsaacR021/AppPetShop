@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="901.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.inicio.inicioController">
+   <children>
+      <ImageView fitHeight="523.0" fitWidth="887.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true">
+         <image>
+            <Image url="@inicio/bglogo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="296.0" fitWidth="378.0" layoutX="271.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@inicio/Meio.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="732.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@inicio/L_dir.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@inicio/L_esq.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="teste" layoutX="391.0" layoutY="287.0" text="Acessar">
+         <font>
+            <Font name="Comic Sans MS" size="32.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="89.0" fitWidth="57.0" layoutX="422.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@inicio/responsavel.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="teste1" layoutX="391.0" layoutY="356.0" text="Responśáveis">
+         <font>
+            <Font name="Comic Sans MS" size="20.0" />
+         </font>
+      </Label>
+      <Separator layoutX="129.0" layoutY="326.0" prefHeight="15.0" prefWidth="643.0" />
+      <Separator layoutX="126.0" layoutY="333.0" orientation="VERTICAL" prefHeight="177.0" prefWidth="6.0" />
+      <Separator layoutX="126.0" layoutY="503.0" prefHeight="15.0" prefWidth="643.0" />
+      <Separator layoutX="769.0" layoutY="333.0" orientation="VERTICAL" prefHeight="177.0" prefWidth="6.0" />
+      <Label fx:id="teste11" layoutX="200.0" layoutY="356.0" text="Animais">
+         <font>
+            <Font name="Comic Sans MS" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="89.0" fitWidth="57.0" layoutX="203.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@inicio/animais.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="57.0" layoutX="621.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@inicio/agendamento.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="teste12" layoutX="575.0" layoutY="356.0" text="Agendamentos">
+         <font>
+            <Font name="Comic Sans MS" size="20.0" />
+         </font>
+      </Label>
+      <Button layoutX="418.0" layoutY="393.0" mnemonicParsing="false" onAction="#ChamarTelaResp" prefHeight="57.0" prefWidth="58.0" style="-fx-opacity: 0;" text="responsaveis">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Button>
+      <Button layoutX="202.0" layoutY="393.0" mnemonicParsing="false" onAction="#ChamarTelaAnimal" prefHeight="57.0" prefWidth="58.0" style="-fx-opacity: 0;" text="animais">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>
