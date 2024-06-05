@@ -181,7 +181,7 @@ public class agendamentoController {
         
     } else {
         
-        
+            chamarexibirAnimais();
             info.setText("Selecione um animal.");
         }
     
