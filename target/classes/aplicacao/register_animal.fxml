@@ -3,26 +3,24 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="901.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.animal.animalController">
    <children>
-      <ImageView fitHeight="619.0" fitWidth="523.0" layoutX="8.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@animal/logo.png" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="523.0" fitWidth="359.0" layoutX="535.0" layoutY="7.0" pickOnBounds="true">
          <image>
-            <Image url="@animal/bglogo.png" />
+            <Image url="@responsavel/bglogo.png" />
          </image>
       </ImageView>
-      <TextField fx:id="nome" focusTraversable="false" layoutX="588.0" layoutY="132.0" prefHeight="39.0" prefWidth="265.0" promptText="Nome" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
+      <TextField fx:id="input_nome" focusTraversable="false" layoutX="590.0" layoutY="124.0" prefHeight="39.0" prefWidth="265.0" promptText="Nome" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
          <effect>
             <Bloom threshold="1.0" />
          </effect>
@@ -33,7 +31,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="especie" focusTraversable="false" layoutX="588.0" layoutY="201.0" prefHeight="39.0" prefWidth="265.0" promptText="Especie" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
+      <TextField fx:id="input_especie" focusTraversable="false" layoutX="590.0" layoutY="191.0" prefHeight="39.0" prefWidth="265.0" promptText="Espécie" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
          <effect>
             <Bloom threshold="1.0" />
          </effect>
@@ -44,7 +42,7 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="raca" focusTraversable="false" layoutX="588.0" layoutY="269.0" prefHeight="39.0" prefWidth="265.0" promptText="Raça" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
+      <TextField fx:id="input_raca" focusTraversable="false" layoutX="590.0" layoutY="262.0" prefHeight="39.0" prefWidth="265.0" promptText="Raça" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
          <effect>
             <Bloom threshold="1.0" />
          </effect>
@@ -55,26 +53,68 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </TextField>
-      <TextField fx:id="idade" focusTraversable="false" layoutX="588.0" layoutY="335.0" prefHeight="39.0" prefWidth="265.0" promptText="Idade" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
-         <effect>
-            <Bloom threshold="1.0" />
-         </effect>
-         <cursor>
-            <Cursor fx:constant="CROSSHAIR" />
-         </cursor>
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </TextField>
-      <Label layoutX="665.0" layoutY="52.0" text="Animal">
+      <Label fx:id="responsavel" layoutX="671.0" layoutY="64.0" text="Animal">
          <font>
             <Font name="Comic Sans MS" size="32.0" />
          </font>
       </Label>
-      <Button fx:id="cadastrar" layoutX="655.0" layoutY="417.0" mnemonicParsing="false" onAction="#telaregistroanimal" prefHeight="53.0" prefWidth="119.0" style="-fx-background-color: #00009C; -fx-background-radius: 45px;" text="Cadastrar" textFill="WHITE">
+      <Button fx:id="cadastrar" layoutX="680.0" layoutY="408.0" mnemonicParsing="false" onAction="#botaocadastrar" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #00009C; -fx-background-radius: 45px;" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="Comic Sans MS" size="14.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
+      <Button fx:id="deletar" layoutX="801.0" layoutY="408.0" mnemonicParsing="false" onAction="#botaodeletar" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #00009C; -fx-background-radius: 45px;" text="Deletar" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="atualizar" layoutX="554.0" layoutY="408.0" mnemonicParsing="false" onAction="#botaoatualizar" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #00009C; -fx-background-radius: 45px;" text="Atualizar" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="info" contentDisplay="CENTER" layoutX="622.0" layoutY="460.0" prefHeight="23.0" prefWidth="233.0" textFill="#ff0b0b">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="mytable2" layoutX="5.0" layoutY="7.0" prefHeight="523.0" prefWidth="527.0" style="-fx-background-color: #54BCFB; -fx-border-color: black;" stylesheets="@styles.css">
+        <columns>
+          <TableColumn fx:id="ID" prefWidth="41.6000075340271" styleClass="table-collum" text="ID" />
+          <TableColumn fx:id="Nome" prefWidth="99.20000457763672" styleClass="table-collum" text="Nome" />
+            <TableColumn fx:id="Especie" prefWidth="107.199951171875" styleClass="table-collum" text="Espécie" />
+            <TableColumn fx:id="Raca" prefWidth="96.800048828125" styleClass="table-collum" text="Raça" />
+            <TableColumn fx:id="Cpfresponsavel" prefWidth="179.20003051757817" styleClass="table-collum" text="CPF Responsável" />
+        </columns>
+      </TableView>
+      <Pane layoutX="532.0" layoutY="7.0" prefHeight="63.0" prefWidth="359.0" />
+      <Button fx:id="voltar" layoutX="622.0" layoutY="495.0" mnemonicParsing="false" onAction="#botaovoltar" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #00009C; -fx-background-radius: 0px;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <TextField fx:id="input_cpf" focusTraversable="false" layoutX="590.0" layoutY="333.0" prefHeight="39.0" prefWidth="265.0" promptText="CPF do Responśavel" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="CROSSHAIR" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

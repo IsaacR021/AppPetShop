@@ -1,29 +1,37 @@
 package entidades;
 
 public class Animal {
-	
+	private int id;
 	private String nome;
 	private String especie;
 	private String raca;
-	private int idade;
+	private long responsavel_cpf;
 
-	public Animal(String nome, String especie, String raca, int idade) {
+	public Animal(int id, String nome, String especie, String raca,long responsavel_cpf) {
+		this.id=id;
 		this.nome = nome;
 		this.especie = especie;
 		this.raca = raca;
-		this.idade = idade;
+		this.responsavel_cpf= responsavel_cpf;
 	}
 
 
 
-	public void apresentaAnimal() {
-		System.out.println("nome: " + this.nome);
-		System.out.println("especie: " + this.especie);
-		System.out.println("raca: " + this.raca);
-		System.out.println("idade: " + this.idade);
+	public long getResponsavel_cpf(){
+		return responsavel_cpf;
+	}
+	public void setResponsavel_cpf(int responsavel_cpf){
+		this.responsavel_cpf=responsavel_cpf;
 	}
 
 
+	public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 	public String getNome() {
 		return nome;
 	}
@@ -48,12 +56,6 @@ public class Animal {
 		this.raca = raca;
 	}
 
-	public int getIdade() {
-		return idade;
-	}
 
-	public void setIdade(Integer idade) {
-		this.idade = idade;
-	}
 
 }

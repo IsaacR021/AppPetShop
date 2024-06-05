@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import aplicacao.UtilBD;
-import entidades.Bancoresponsavel;
 import entidades.Responsavel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,9 +21,9 @@ public class ResponsavelDAO {
             Connection conexao = UtilBD.obterConexao(); 
             PreparedStatement ps = conexao.prepareStatement(sql);
             ps.setString(1, responsavel.getNome());
-            ps.setString(2, responsavel.gettelefone());
-            ps.setString(3, responsavel.getcpf());
-            ps.setString(4, responsavel.getendereco());
+            ps.setString(2, responsavel.getTelefone());
+            ps.setString(3, responsavel.getCpf());
+            ps.setString(4, responsavel.getEndereco());
             ps.executeUpdate();
             ps.close();
             UtilBD.fecharConexao();
@@ -40,7 +39,7 @@ public class ResponsavelDAO {
         try {
             Connection conexao = UtilBD.obterConexao(); 
             PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setString( 1, responsavel.getcpf());
+            ps.setString( 1, responsavel.getCpf());
             int linhasAfetadas = ps.executeUpdate();
             ps.close();
             UtilBD.fecharConexao();
@@ -64,7 +63,7 @@ public class ResponsavelDAO {
 
 
 
-    public static void atualizarResponsavel(Bancoresponsavel responsavel,Label infoLabel) {
+    public static void atualizarResponsavel(Responsavel responsavel,Label infoLabel) {
         String sql = "UPDATE responsaveis SET nome = ?, telefone = ?, cpf = ?, endereco = ? WHERE responsavel_id = ?";
 
         try {
@@ -99,8 +98,8 @@ public class ResponsavelDAO {
 
 
 
-public static ObservableList<Bancoresponsavel> listartodosresponsaveis() {
-    ObservableList<Bancoresponsavel> listaResponsaveis = FXCollections.observableArrayList();
+public static ObservableList<Responsavel> listartodosresponsaveis() {
+    ObservableList<Responsavel> listaResponsaveis = FXCollections.observableArrayList();
     String query = "SELECT * FROM responsaveis";
     
     try (Connection conexao = UtilBD.obterConexao();
@@ -108,7 +107,7 @@ public static ObservableList<Bancoresponsavel> listartodosresponsaveis() {
          ResultSet resultSet = statement.executeQuery(query)) {
         
         while (resultSet.next()) {
-            Bancoresponsavel banco_responsavel =new Bancoresponsavel(
+            Responsavel banco_responsavel =new Responsavel(
                     resultSet.getInt("responsavel_id"),
                     resultSet.getString("nome"),
                     resultSet.getString("telefone"),
@@ -125,8 +124,8 @@ public static ObservableList<Bancoresponsavel> listartodosresponsaveis() {
 }
 
 
-public static ObservableList<Bancoresponsavel> listarpesquisaresponsaveis(String input_pesquisa) {
-    ObservableList<Bancoresponsavel> listaResponsaveis = FXCollections.observableArrayList();
+public static ObservableList<Responsavel> listarpesquisaresponsaveis(String input_pesquisa) {
+    ObservableList<Responsavel> listaResponsaveis = FXCollections.observableArrayList();
     String query = "SELECT * FROM responsaveis WHERE responsavel_id = ? OR cpf = ?";
     
     try (Connection conexao = UtilBD.obterConexao();
@@ -137,7 +136,7 @@ public static ObservableList<Bancoresponsavel> listarpesquisaresponsaveis(String
         
         try (ResultSet resultSet = statement.executeQuery()) { 
             while (resultSet.next()) {
-                Bancoresponsavel banco_responsavel = new Bancoresponsavel(
+                Responsavel banco_responsavel = new Responsavel(
                         resultSet.getInt("responsavel_id"),
                         resultSet.getString("nome"),
                         resultSet.getString("telefone"),

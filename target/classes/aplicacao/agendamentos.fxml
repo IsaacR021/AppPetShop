@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="1250.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="aplicacao.agendamento.agendamentoController">
+   <children>
+      <ImageView fitHeight="523.0" fitWidth="366.0" layoutX="878.0" layoutY="7.0" pickOnBounds="true">
+         <image>
+            <Image url="@agendamento/bglogo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="cadastrar" layoutX="1022.0" layoutY="403.0" mnemonicParsing="false" onAction="#botaofazeragendamento" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #00009C; -fx-background-radius: 45px;" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="deletar" layoutX="1143.0" layoutY="403.0" mnemonicParsing="false" onAction="#botaodeletar" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #00009C; -fx-background-radius: 45px;" text="Deletar" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="atualizar" layoutX="896.0" layoutY="403.0" mnemonicParsing="false" onAction="#botaoatualizar" prefHeight="39.0" prefWidth="86.0" style="-fx-background-color: #00009C; -fx-background-radius: 45px;" text="Atualizar" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="voltar" layoutX="971.0" layoutY="491.0" mnemonicParsing="false" onAction="#botaovoltar" prefHeight="32.0" prefWidth="178.0" style="-fx-background-color: #00009C; -fx-background-radius: 0px;" text="Voltar" textFill="WHITE">
+         <font>
+            <Font name="Comic Sans MS" size="14.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Label fx:id="info" layoutX="937.0" layoutY="341.0" prefHeight="32.0" prefWidth="236.0" textFill="#ff0b0b">
+         <font>
+            <Font name="Comic Sans MS" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="mytable" layoutX="6.0" layoutY="7.0" prefHeight="523.0" prefWidth="866.0" style="-fx-background-color: #54BCFB; -fx-border-color: black;" stylesheets="@styles.css">
+        <columns>
+          <TableColumn fx:id="ID" prefWidth="41.6000075340271" styleClass="table-collum" text="ID" />
+          <TableColumn fx:id="Endereco" prefWidth="119.20000839233398" styleClass="table-collum" text="Endereço" />
+            <TableColumn fx:id="Data" prefWidth="55.199981689453125" styleClass="table-collum" text="Data" />
+            <TableColumn fx:id="Horario" prefWidth="54.40003967285156" styleClass="table-collum" text="Horário" />
+            <TableColumn fx:id="Servico" prefWidth="144.79998779296875" styleClass="table-collum" text="Serviço" />
+            <TableColumn fx:id="Nome" prefWidth="120.79998779296875" styleClass="table-collum" text="Nome" />
+            <TableColumn fx:id="Especie" prefWidth="105.60003662109375" styleClass="table-collum" text="Espécie" />
+            <TableColumn fx:id="Raca" prefWidth="95.199951171875" styleClass="table-collum" text="Raça" />
+            <TableColumn fx:id="Cpfresponsavel" prefWidth="105.5999755859375" styleClass="table-collum" text="CPF Responśavel" />
+        </columns>
+      </TableView>
+      <Pane layoutX="883.0" layoutY="11.0" prefHeight="63.0" prefWidth="359.0">
+         <children>
+            <Label fx:id="responsavel" layoutX="71.0" layoutY="26.0" text="Agendamentos">
+               <font>
+                  <Font name="Comic Sans MS" size="32.0" />
+               </font>
+            </Label>
+         </children></Pane>
+      <TextField fx:id="input_cpf" focusTraversable="false" layoutX="929.0" layoutY="103.0" prefHeight="39.0" prefWidth="265.0" promptText="CPF" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="CROSSHAIR" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="input_data" focusTraversable="false" layoutX="929.0" layoutY="155.0" prefHeight="39.0" prefWidth="265.0" promptText="Data" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="CROSSHAIR" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="input_horario" focusTraversable="false" layoutX="929.0" layoutY="208.0" prefHeight="39.0" prefWidth="265.0" promptText="´Horário" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="CROSSHAIR" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="input_servico" focusTraversable="false" layoutX="929.0" layoutY="262.0" prefHeight="39.0" prefWidth="266.0" promptText="Serviço" style="-fx-background-radius: 20px; -fx-border-width: 2px; -fx-border-color: #000; -fx-background-color: #ffffff; -fx-border-radius: 20px;">
+         <effect>
+            <Bloom threshold="1.0" />
+         </effect>
+         <cursor>
+            <Cursor fx:constant="CROSSHAIR" />
+         </cursor>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

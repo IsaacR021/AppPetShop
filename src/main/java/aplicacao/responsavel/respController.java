@@ -6,8 +6,7 @@ import java.io.IOException;
 import aplicacao.App;
 import entidades.Responsavel;
 
-//import java.sql.SQLException;
-import entidades.Bancoresponsavel;
+
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,22 +43,22 @@ public class respController {
 
 
     @FXML
-    private TableView<Bancoresponsavel> mytable;
+    private TableView<Responsavel> mytable;
 
     @FXML
-    private TableColumn<Bancoresponsavel, String> CPF;
+    private TableColumn<Responsavel, String> CPF;
 
     @FXML
-    private TableColumn<Bancoresponsavel, String> Endereco;
+    private TableColumn<Responsavel, String> Endereco;
 
     @FXML
-    private TableColumn<Bancoresponsavel, Integer> ID;
+    private TableColumn<Responsavel, Integer> ID;
 
     @FXML
-    private TableColumn<Bancoresponsavel, String> Nome;
+    private TableColumn<Responsavel, String> Nome;
 
     @FXML
-    private TableColumn<Bancoresponsavel, String> Telefone;
+    private TableColumn<Responsavel, String> Telefone;
 
     @FXML
     private Button atualizar;
@@ -85,50 +84,62 @@ public class respController {
 
 
     @FXML
-    void ChamarCadastrarResponsavel(){
-        Responsavel responsavel = new Responsavel(input_nome.getText(),input_telefone.getText(),input_cpf.getText(),input_endereco.getText());
-        ResponsavelDAO.cadastrarResponsavel(responsavel);
+    void ChamarCadastrarResponsavel() {
+    if (input_nome.getText().isEmpty() || 
+        input_telefone.getText().isEmpty() || 
+        input_cpf.getText().isEmpty() || 
+        input_endereco.getText().isEmpty()) {
+        
+        
+        info.setText("Preencha todos os campos.");
+        return;
     }
+    
+    
+    Responsavel responsavel = new Responsavel(0,input_nome.getText(), input_telefone.getText(), input_cpf.getText(), input_endereco.getText());
+    ResponsavelDAO.cadastrarResponsavel(responsavel);
+}
+
 
     @FXML
     void ChamarExcluirResponsavel(){
-        Responsavel responsavel = new Responsavel(input_nome.getText(),input_telefone.getText(),input_cpf.getText(),input_endereco.getText());
+        Responsavel responsavel = new Responsavel(0,input_nome.getText(),input_telefone.getText(),input_cpf.getText(),input_endereco.getText());
         ResponsavelDAO.excluirResponsavel(responsavel,info);
     }
 
     @FXML
     void ChamarAtualizarResponsavel(){
-        Bancoresponsavel responsavel = new Bancoresponsavel(getIdSelecionado(),input_nome.getText(),input_telefone.getText(),input_cpf.getText(),input_endereco.getText());
+        Responsavel responsavel = new Responsavel(getIdSelecionado(),input_nome.getText(),input_telefone.getText(),input_cpf.getText(),input_endereco.getText());
         ResponsavelDAO.atualizarResponsavel(responsavel,info);
     }
 
     
     @FXML
     void Chamartelainicial() throws IOException{
-        App.setRoot("inicio"); 
+        App.changeScene("inicio", 900, 538); 
 
     }
     
     private int idSelecionado;
 
     public void exibirDados() {
-        // Obtém a lista de responsáveis do banco de dados
-        ObservableList<Bancoresponsavel> listaResponsaveis = ResponsavelDAO.listartodosresponsaveis();
         
-        // Define as células de cada coluna para exibir os dados corretos
+        ObservableList<Responsavel> listaResponsaveis = ResponsavelDAO.listartodosresponsaveis();
+        
+        
         CPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         Endereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         ID.setCellValueFactory(new PropertyValueFactory<>("id"));
         Nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         Telefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
         
-        // Define os itens da TableView
+        
         mytable.setItems(listaResponsaveis);
         mytable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                // Quando uma linha é selecionada, você pode acessar os itens da linha e fazer o que precisar com eles
-                Bancoresponsavel itemSelecionado = newSelection;
-                // Por exemplo, se deseja exibir o CPF na caixa de texto input_cpf
+                
+                Responsavel itemSelecionado = newSelection;
+                
                 idSelecionado=itemSelecionado.getId();
                 input_nome.setText(itemSelecionado.getNome());
                 input_telefone.setText(itemSelecionado.getTelefone());
@@ -144,22 +155,22 @@ public class respController {
 
     public void exibirPesquisa() {
         
-        ObservableList<Bancoresponsavel> listaResponsaveis = ResponsavelDAO.listarpesquisaresponsaveis(input_pesquisa.getText());
+        ObservableList<Responsavel> listaResponsaveis = ResponsavelDAO.listarpesquisaresponsaveis(input_pesquisa.getText());
         
-        // Define as células de cada coluna para exibir os dados corretos
+        
         CPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
         Endereco.setCellValueFactory(new PropertyValueFactory<>("endereco"));
         ID.setCellValueFactory(new PropertyValueFactory<>("id"));
         Nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         Telefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
         
-        // Define os itens da TableView
+        
         mytable.setItems(listaResponsaveis);
         mytable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
-                // Quando uma linha é selecionada, você pode acessar os itens da linha e fazer o que precisar com eles
-                Bancoresponsavel itemSelecionado = newSelection;
-                //exibir o CPF na caixa de texto input_cpf
+                
+                Responsavel itemSelecionado = newSelection;
+                
                 idSelecionado=itemSelecionado.getId();
                 input_nome.setText(itemSelecionado.getNome());
                 input_telefone.setText(itemSelecionado.getTelefone());
@@ -183,7 +194,7 @@ public class respController {
 
     @FXML
     void limparCampos(ActionEvent event) {
-        // Limpa o conteúdo de todos os campos de entrada
+        
         input_pesquisa.clear();
         input_cpf.clear();
         input_endereco.clear();

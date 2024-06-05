@@ -35,7 +35,7 @@ public class UtilBD {
                     "responsavel_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
                     "nome TEXT NOT NULL," +
                     "telefone TEXT NOT NULL," +
-                    "cpf TEXT NOT NULL," +
+                    "cpf BIGINT NOT NULL UNIQUE," +
                     "endereco TEXT NOT NULL)");
 
             
@@ -44,13 +44,27 @@ public class UtilBD {
                     "nome TEXT NOT NULL," +
                     "especie TEXT NOT NULL," +
                     "raca TEXT," +
-                    "idade INT," +
-                    "responsavel_id INTEGER," +
-                    "FOREIGN KEY (responsavel_id) REFERENCES responsaveis(responsavel_id))");
+                    "responsavel_cpf BIGINT NOT NULL," +
+                    "FOREIGN KEY (responsavel_cpf) REFERENCES responsaveis(cpf))");
+
+            stm.executeUpdate("CREATE TABLE IF NOT EXISTS agendamentos (" +
+                    "agendamento_id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT," +
+                    "animal_id INTEGER NOT NULL," +
+                    "responsavel_cpf BIGINT NOT NULL," +
+                    "data TEXT NOT NULL," +
+                    "horario TEXT NOT NULL," +
+                    "servico TEXT NOT NULL," + 
+                    "FOREIGN KEY (responsavel_cpf) REFERENCES responsaveis(cpf)," + 
+                    "FOREIGN KEY (animal_id) REFERENCES animais(animal_id)," + 
+                    "FOREIGN KEY (responsavel_cpf) REFERENCES animais(responsavel_cpf))"); 
 
 
 
 
+
+
+
+                    
             stm.close();
         } catch (SQLException e) {
             System.err.println("Erro ao inicializar o banco de dados: " + e.getMessage());

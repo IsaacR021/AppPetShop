@@ -1,11 +1,11 @@
 package aplicacao; 
 
-import javafx.application.Application; // Importa a classe Application do JavaFX para iniciar a aplicação
-import javafx.fxml.FXMLLoader; // Importa o FXMLLoader do JavaFX para carregar arquivos FXML
-import javafx.scene.Parent; // Importa a classe Parent do JavaFX para representar a hierarquia de nós da interface do usuário
-import javafx.scene.Scene; // Importa a classe Scene do JavaFX para representar uma cena
-import javafx.stage.Stage; // Importa a classe Stage do JavaFX para representar a janela da aplicação
-import java.io.IOException; // Importa a classe IOException para lidar com exceções de entrada/saída de arquivos
+import javafx.application.Application; 
+import javafx.fxml.FXMLLoader; 
+import javafx.scene.Parent; 
+import javafx.scene.Scene; 
+import javafx.stage.Stage; 
+import java.io.IOException; 
 
 
 /**
@@ -15,13 +15,24 @@ public class App extends Application {
      
    
     private static Scene scene; 
+    private static Stage primaryStage;
     @SuppressWarnings("exports")
     @Override
     public void start(Stage stage) throws IOException { 
+
+        primaryStage = stage;
         UtilBD.criarbanco();
         scene = new Scene(loadFXML("inicio")); 
         stage.setScene(scene); 
+        stage.setResizable(false); 
         stage.show(); 
+        stage.centerOnScreen();
+    }
+
+    public static void changeScene(String fxml, double width, double height) throws IOException {
+        Scene newScene = new Scene(loadFXML(fxml), width, height);
+        primaryStage.setScene(newScene);
+        primaryStage.centerOnScreen();
     }
 
     public static void setRoot(String fxml) throws IOException { 

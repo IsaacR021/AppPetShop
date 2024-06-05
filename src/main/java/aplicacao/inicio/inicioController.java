@@ -8,11 +8,16 @@ import javafx.fxml.FXML;
 public class inicioController {
     @FXML
     void ChamarTelaResp() throws IOException{
-        App.setRoot("register_resp"); 
+        App.changeScene("register_resp", 900, 538); 
     }
     @FXML
     void ChamarTelaAnimal() throws IOException{
-        App.setRoot("register_animal"); 
+        App.changeScene("register_animal", 900, 538);
+    }
+
+    @FXML
+    void ChamarTelaAgendamentos() throws IOException{
+        App.changeScene("agendamentos", 1255, 547);
     }
 
 
