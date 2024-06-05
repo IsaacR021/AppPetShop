@@ -105,7 +105,7 @@ public class agendamentoController {
 
     @FXML
     private void botaoatualizar(ActionEvent event) {
-
+        enableFieldUpdates();
         limparInfo();
 
         
@@ -123,7 +123,7 @@ public class agendamentoController {
     }
     @FXML
     private void botaodeletar(ActionEvent event) {
-
+        enableFieldUpdates();
         limparInfo();
 
         int id = getIdSelecionado();
@@ -178,10 +178,11 @@ public class agendamentoController {
         agendamentoDAO.fazerAgendamento(agendamento);
         limparCampos(event);
         initialize();
+        enableFieldUpdates();
         
     } else {
         
-        
+            chamarexibirAnimais();
             info.setText("Selecione um animal.");
         }
     

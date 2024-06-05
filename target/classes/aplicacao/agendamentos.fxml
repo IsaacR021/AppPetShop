@@ -61,10 +61,10 @@
         <columns>
           <TableColumn fx:id="ID" prefWidth="41.6000075340271" styleClass="table-collum" text="ID" />
           <TableColumn fx:id="Endereco" prefWidth="119.20000839233398" styleClass="table-collum" text="Endereço" />
-            <TableColumn fx:id="Data" prefWidth="55.199981689453125" styleClass="table-collum" text="Data" />
-            <TableColumn fx:id="Horario" prefWidth="54.40003967285156" styleClass="table-collum" text="Horário" />
-            <TableColumn fx:id="Servico" prefWidth="144.79998779296875" styleClass="table-collum" text="Serviço" />
-            <TableColumn fx:id="Nome" prefWidth="120.79998779296875" styleClass="table-collum" text="Nome" />
+            <TableColumn fx:id="Data" prefWidth="75.99996948242188" styleClass="table-collum" text="Data" />
+            <TableColumn fx:id="Horario" prefWidth="52.80006408691406" styleClass="table-collum" text="Horário" />
+            <TableColumn fx:id="Servico" prefWidth="139.199951171875" styleClass="table-collum" text="Serviço" />
+            <TableColumn fx:id="Nome" prefWidth="108.79998779296875" styleClass="table-collum" text="Nome" />
             <TableColumn fx:id="Especie" prefWidth="105.60003662109375" styleClass="table-collum" text="Espécie" />
             <TableColumn fx:id="Raca" prefWidth="95.199951171875" styleClass="table-collum" text="Raça" />
             <TableColumn fx:id="Cpfresponsavel" prefWidth="105.5999755859375" styleClass="table-collum" text="CPF Responśavel" />
